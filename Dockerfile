@@ -1,8 +1,11 @@
-# FROM alpine:latest
 FROM archlinux:latest
 
-# RUN apk add build-base
-RUN pacman -Syu --noconfirm base-devel vim gdb git
+# Necessary for the container to run
+RUN pacman -Syu --noconfirm base-devel git
+
+
+# Nice-to-haves
+RUN pacman -Syu vim gdb zsh
 
 # Douglas Moore got camllight 75 running. Thanks!
 RUN git clone https://git.sr.ht/~dglmoore/camllight
@@ -29,5 +32,5 @@ RUN make -C LambdaC
 
 RUN make -C AlChemy all
 
-# CMD ["sh"]
+# Change this to CMD ["sh"] for an interactive shell
 CMD ["./AlChemy/LambdaReactor/ALCHEMY"]
