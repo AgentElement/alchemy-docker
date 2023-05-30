@@ -1,0 +1,7 @@
+Algorithmic Chemistry by W Fontana et al, runs in an arch linux docker container
+
+To run:
+
+0. Edit AlChemy/input/LambdaReactor/alchemy.inp as desired
+1. docker build -t alchemy .
+2. docker run --rm -it alchemy

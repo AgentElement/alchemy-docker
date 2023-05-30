@@ -1,0 +1,15 @@
+*.o
+*.zi
+*.zo
+client
+server
+ALCHEMY
+PEEP
+TYPE_TEST
+BASIS
+LEX
+PARSE
+TYPE
+TYPER
+TYPER2
+test/data/A-Turing-Gas*

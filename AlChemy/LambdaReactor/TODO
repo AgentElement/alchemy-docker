@@ -1,0 +1,6 @@
+bug in fast_standardize: new names for bounds are not checked
+against names for free variables. This is currently circumvented
+by using good old reliable standardize of lambda.c.
+
+annotate before reducing in randomexpr.c ?
+
