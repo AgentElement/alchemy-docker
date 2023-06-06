@@ -5,7 +5,9 @@ RUN pacman -Syu --noconfirm base-devel git
 
 
 # Nice-to-haves
-RUN pacman -Syu vim gdb zsh
+RUN pacman --noconfirm -Syu vim gdb zsh
+
+WORKDIR .
 
 # Douglas Moore got camllight 75 running. Thanks!
 RUN git clone https://git.sr.ht/~dglmoore/camllight
@@ -20,17 +22,20 @@ RUN git clone https://git.sr.ht/~dglmoore/camllight
 # RUN ls /home/build/
 # RUN sudo -u nobody makepkg  -p /home/build/gcc11/PKGBUILD -Si
 
-WORKDIR .
-
-COPY . .
 
 RUN make -C camllight/src configure 
 RUN make -C camllight/src world
 RUN make -C camllight/src install
 
+COPY LambdaC LambdaC
+
+RUN ls -la
+
 RUN make -C LambdaC
+
+COPY AlChemy AlChemy
 
 RUN make -C AlChemy all
 
-# Change this to CMD ["sh"] for an interactive shell
+# Change this to CMD ["zsh"] for an interactive shell
 CMD ["./AlChemy/LambdaReactor/ALCHEMY"]
